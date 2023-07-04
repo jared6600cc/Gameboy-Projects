@@ -1,7 +1,7 @@
 # GBDK-Lab
 Gameboy projects using GBDK
 
-A Learning environment for learning Gameboy (DMG-01) & Gameboy Color (CBG-001) programming.
+A Learning environment for learning Gameboy (DMG-01) programming.
 
 Using GBDK (https://gbdk.sourceforge.net/), the C Programming Language, & mGBA for prototyping.
 
