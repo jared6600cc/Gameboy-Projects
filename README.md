@@ -1,4 +1,4 @@
-# GBDK-Lab
+# Gameboy-Projects
 Gameboy projects using GBDK
 
 A Learning environment for learning Gameboy (DMG-01) programming.
