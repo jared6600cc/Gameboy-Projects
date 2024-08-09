@@ -1,1 +1,1 @@
-![image](https://github.com/jared6600cc/GBDK-Lab/assets/135299193/b2b8ea43-127f-459d-8ef4-724cf99053f7)
+![Capture](https://github.com/user-attachments/assets/9fc23054-68d5-4ba8-bc66-99cda0fa05f4)
