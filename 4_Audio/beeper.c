@@ -1,7 +1,7 @@
 #include <gb/gb.h>
 
-int delayMS = 10;
-int beepDuration = 10;
+int delayMS = 50;
+int beepDuration = 100;
 
 void init_sound(){
 	NR52_REG = 0x80; //turn on sound
@@ -9,12 +9,20 @@ void init_sound(){
 	NR51_REG = 0xFF;	// enable all sound channels
 }
 
-void play_beep(){
-	NR10_REG = 0x16;	// sweep settings
+void play_beep(UINT8 jpr){
+	NR10_REG = 0x00;	// sweep settings
 	NR11_REG = 0x80;	// wave duty cycle
 	NR12_REG = 0xF3;	// volume envelope
-	NR13_REG = 0x00;	// frequency low
-	NR14_REG = 0x87;	// frequency high & start sound
+	if(jpr & J_UP){				//highbeep
+		NR13_REG = 255 & 0xFF;			// set lower 8bits of the freq.
+		NR14_REG = (255 >> 8)|0x80;		// set upper 3bits & trigger the sound
+	} else if(jpr & J_DOWN){	//lowbeep
+		NR13_REG = 0 & 0xFF;			// set lower 8bits of the freq.
+		NR14_REG = (0 >> 8)|0x80;		// set upper 3bits & trigger the sound
+	} else {					//medbeep
+		NR13_REG = 100 & 0xFF;			// set lower 8bits of the freq.
+		NR14_REG = (150 >> 8)|0x80;		// set upper 3bits & trigger the sound
+	}
 }
 
 void main(){
@@ -26,16 +34,16 @@ void main(){
 		
 		// Move sprite if input detected
 		if(joypadResult & J_UP){
-			play_beep();
+			play_beep(joypadResult);
 		}
 		if(joypadResult & J_DOWN){
-			play_beep();
+			play_beep(joypadResult);
 		}
 		if(joypadResult & J_RIGHT){
-			play_beep();
+			play_beep(joypadResult);
 		}
 		if(joypadResult & J_LEFT){
-			play_beep();
+			play_beep(joypadResult);
 		}
 		delay(delayMS);
 	}
