@@ -4,14 +4,14 @@
 
 void main(){
 	// Init device
-	display_off();	// off for setup
+	DISPLAY_OFF;	// off for setup
 	set_mode(0);	// 0= textmode
 	
 	// Print to screen	
 	printf("\nHello World\n");
 	
 	// Turn on display
-	display_on();
+	DISPLAY_ON;
 	
 	// Main game loop
 	while(1){
